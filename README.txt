@@ -11,14 +11,14 @@ Add environment variables in Render dashboard
 Curl scripts for testing
 
 
-2. Get (or create) cart
+Get (or create) cart
 
 curl -X GET http://localhost:8084/cart \
   -b cookies.txt
 
 
 
-3. Add item
+Add item
 
 curl -X POST http://localhost:8084/cart/items \
   -H "Content-Type: application/json" \
@@ -31,9 +31,9 @@ curl -X POST http://localhost:8084/cart/items \
 
 
 
-5. Update item quantity
+Update item quantity
 
-curl -X PUT http://localhost:8084/cart/items/1 \
+curl -X PUT http://localhost:8084/cart/items/6 \
   -H "Content-Type: application/json" \
   -b cookies.txt \
   -d '{
@@ -42,21 +42,36 @@ curl -X PUT http://localhost:8084/cart/items/1 \
 
 
 
-6. Get total
+Get total
 
 curl -X GET http://localhost:8084/cart/total \
   -b cookies.txt
 
 
 
-7. Delete item
+Delete item
 
-curl -X DELETE http://localhost:8084/cart/items/1 \
+curl -X DELETE http://localhost:8084/cart/items/3 \
   -b cookies.txt
 
 
 
-8. Admin-only: get all carts
+Admin-only: get all carts
 
 curl -X GET http://localhost:8084/admin/carts \
   -b cookies.txt
+
+
+
+Delete own cart
+
+curl -X DELETE http://localhost:8084/cart \
+  -b cookies.txt
+
+
+
+Admin: delete specific cart
+
+curl -X DELETE http://localhost:8084/admin/carts/1 \
+  -b cookies.txt
+

@@ -14,3 +14,9 @@ cart_routes.route("/cart/total", methods=["GET"])(authenticate(get_total_control
 cart_routes.route("/admin/carts", methods=["GET"])(
     authenticate(authorize(["ADMIN"])(get_all_carts_controller))
 )
+cart_routes.route("/cart", methods=["DELETE"])(
+    authenticate(delete_cart_controller)
+)
+cart_routes.route("/admin/carts/<int:cart_id>", methods=["DELETE"])(
+    authenticate(authorize(["ADMIN"])(admin_delete_cart_controller))
+)
